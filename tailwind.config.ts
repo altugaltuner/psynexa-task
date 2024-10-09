@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        slideLeftRight: {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(10px)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'slide-left-right': 'slideLeftRight 3s ease-in-out infinite',
+      },
       boxShadow: {
         'custom-inset': '-3px -3px 0px 0px #0000004D inset',
       },

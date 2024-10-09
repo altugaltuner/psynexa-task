@@ -1,5 +1,36 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+
+interface CounterProps {
+    endValue: number;
+}
+
+const Counter: React.FC<CounterProps> = ({ endValue }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let start = 0;
+        const duration = 2000;
+        const incrementTime = 30;
+        const totalSteps = duration / incrementTime;
+        const incrementValue = endValue / totalSteps;
+
+        const counter = setInterval(() => {
+            start += incrementValue;
+            if (start >= endValue) {
+                start = endValue;
+                clearInterval(counter);
+            }
+            setCount(Math.floor(start));
+        }, incrementTime);
+
+        return () => clearInterval(counter);
+    }, [endValue]);
+
+    return <p className="md:text-[54px] sm:text-4xl text-2xl font-bold">{count}+</p>;
+};
 
 const HeroSection = () => {
     return (
@@ -47,10 +78,10 @@ const HeroSection = () => {
                                 className="absolute top-[25%] w-full h-auto object-cover scale-150 object-top"
                             />
                         </div>
-                        <div className="items-center absolute md:top-[215px] md:right-[10px] lg:top-[200px] lg:right-[120px] bg-white  md:w-[170px] w-[148px] xl:h-[64px] md:h-[48px] rounded-r-[22px] rounded-tl-[22px] shadow-custom-inset justify-center hidden md:flex">
+                        <div className="items-center absolute md:top-[215px] md:right-[10px] lg:top-[200px] lg:right-[120px] bg-white  md:w-[170px] w-[148px] xl:h-[64px] md:h-[48px] rounded-r-[22px] rounded-tl-[22px] shadow-custom-inset justify-center hidden md:flex animate-slide-left-right">
                             <p className='font-semibold md:text-base text-sm leading-6 text-[#252534]'>Data Analysis</p>
                         </div>
-                        <div className="items-center absolute xl:bottom-[-70px] xl:left-[175px] bottom-[-80px] left-[65px] bg-white text-[#252534] xl:w-[212px] xl:h-[64px] w-[200px] h-[48px] rounded-l-[22px] rounded-br-[0px] rounded-tr-[22px] shadow-custom-inset justify-center hidden md:flex">
+                        <div className="items-center absolute xl:bottom-[-70px] xl:left-[175px] bottom-[-80px] left-[65px] bg-white text-[#252534] xl:w-[212px] xl:h-[64px] w-[200px] h-[48px] rounded-l-[22px] rounded-br-[0px] rounded-tr-[22px] shadow-custom-inset justify-center hidden md:flex animate-slide-left-right">
                             <p className='font-semibold md:text-base text-sm text-[#252534]'>App Development</p>
                         </div>
                     </div>
@@ -62,7 +93,7 @@ const HeroSection = () => {
                 <Image width={52} height={52} src="/star-logo.png" alt="star-logo" className='z-20 sm:w-[92px] w-12 absolute bottom-[-44px] left-[-30px] sm:left-[-45px]' />
 
                 <div className="flex flex-col items-center">
-                    <p className="md:text-[54px] sm:text-4xl text-2xl font-bold">7+</p>
+                    <Counter endValue={7} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">years of</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>experience</p>
                 </div>
@@ -70,7 +101,7 @@ const HeroSection = () => {
                 <div className="h-12 w-px bg-black opacity-50"></div>
 
                 <div className="flex flex-col items-center">
-                    <p className="md:text-[54px] sm:text-4xl text-2xl font-bold">50+</p>
+                    <Counter endValue={50} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">complete</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>projects</p>
                 </div>
@@ -78,7 +109,7 @@ const HeroSection = () => {
                 <div className="h-12 w-px bg-black opacity-50"></div>
 
                 <div className="flex flex-col items-center">
-                    <p className="md:text-[54px] sm:text-4xl text-2xl font-bold">30+</p>
+                    <Counter endValue={30} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">Happy</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>customers</p>
                 </div>
