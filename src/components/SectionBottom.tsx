@@ -7,9 +7,6 @@ const SectionBottom = () => {
                 <h2 className='font-semibold md:text-[54px] text-4xl leading-[60px]'>Family Background</h2>
                 <p className='font-medium md:text-lg text-sm'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type!</p>
             </div>
-            {/* Üst Elips */}
-            {/* Fotoğraf Bölümü */}
-
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10 w-full inset-0">
 
@@ -33,10 +30,7 @@ const SectionBottom = () => {
                 <div className="w-full h-[50px] bottom-0 bg-transparent overflow-hidden absolute hidden sm:block">
                     <div className="absolute top-0 left-0 w-full h-full bg-primary transform scale-x-[1.0] rounded-t-[100%]"></div>
                 </div>
-
             </div>
-
-            {/* Alt Elips */}
         </div>
     );
 };

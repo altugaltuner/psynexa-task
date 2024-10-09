@@ -53,8 +53,8 @@ const SectionTop = () => {
     return (
         <div className="flex flex-col gap-5 lg:flex-row items-center justify-between bg-black pb-12 md:pt-24 sm:pt-14 pt-4 px-6 lg:px-16 relative">
             <img src="/star-logo.png" alt="star-logo" className='absolute bottom-[-46px] left-[50px] w-[92px] h-[92px]' />
-            <img src="/big-pink.png" alt="star-logo" className="absolute bottom-0 right-0 hidden sm:block 2xl:w-[140px] xl:w-28 lg:w-16 md:w-28 sm:w-20" />
-            {/* Sol Taraf: Resim */}
+            <img src="/big-pink.png" alt="star-logo" className="absolute bottom-0 right-0 hidden md:block 2xl:w-[140px] xl:w-28 lg:w-16 md:w-28" />
+
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start lg:mb-0">
                 <img
                     src="/rocket-boy.png"
@@ -63,14 +63,12 @@ const SectionTop = () => {
                 />
             </div>
 
-            {/* Sağ Taraf: Yazılar */}
             <div className="flex flex-col lg:items-baseline items-center w-full lg:w-1/2 text-white font-clash">
                 <h2 className="md:text-[54px] sm:text-5xl text-3xl font-semibold leading-[60px] mb-4 sm:text-left text-center">My Professional<br />Background</h2>
                 <p className="sm:text-lg text-base mb-6 font-medium leading-6">
                     Sed ut perspiciatis unde omnis iste natus error sit<br />voluptatem accusantium doloremque laudantium,
                 </p>
 
-                {/* Menü Öğeleri */}
                 <div className="">
                     {menuItems.map((item, index) => (
                         <div className='flex flex-col'>
