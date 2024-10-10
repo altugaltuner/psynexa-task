@@ -32,7 +32,6 @@ const Footer = () => {
                 </div>
 
                 <div className='flex flex-col md:w-1/2 sm:w-3/4 w-full min-h-[350px] justify-between max-w-[500px]'>
-
                     <div className='flex justify-between'>
                         <div className='mr-5'>
                             <h3 className="font-bold md:text-2xl sm:text-xl text-lg mb-4">Pages</h3>

@@ -33,13 +33,55 @@ const Counter: React.FC<CounterProps> = ({ endValue }) => {
 };
 
 const HeroSection = () => {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const handleMenuToggle = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (menuOpen && e.target instanceof HTMLElement && e.target.id === 'overlay') {
+            setMenuOpen(false);
+        }
+    };
+
     return (
         <section className="relative bg-black text-white">
+            {menuOpen && (
+                <div
+                    id="overlay"
+                    className="fixed inset-0 bg-black bg-opacity-50 z-20"
+                    onClick={handleOutsideClick}
+                ></div>
+            )}
+
+            <div className='flex justify-end z-30 relative md:pt-6 pt-2'>
+                <Image
+                    width={44}
+                    height={45}
+                    src="/menu.png"
+                    alt="menu"
+                    className='md:mr-[123px] sm:mr-[50px] mr-[30px] cursor-pointer'
+                    onClick={handleMenuToggle}
+                />
+            </div>
+
+            <div
+                className={`fixed top-0 right-0 h-full w-[300px] bg-white shadow-lg transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+                    } transition-transform duration-300 ease-in-out z-30`}
+            >
+                <ul className="flex flex-col p-6 space-y-4 text-black">
+                    <li className="text-lg font-semibold cursor-pointer">Category 1</li>
+                    <li className="text-lg font-semibold cursor-pointer">Category 2</li>
+                    <li className="text-lg font-semibold cursor-pointer">Category 3</li>
+                    <li className="text-lg font-semibold cursor-pointer">Category 4</li>
+                </ul>
+            </div>
             <div
                 className="absolute inset-0 bg-cover bg-center opacity-30 cursor-pointer h-full"
                 style={{ backgroundImage: "url('/concrete-background.jpeg')" }}
             ></div>
-            <div className='flex justify-end z-10 relative md:pt-6 pt-2'><Image width={44} height={45} src="/menu.png" alt="menu" className='md:mr-[123px] sm:mr-[50px] mr-[30px] cursor-pointer' /></div>
             <div className="relative z-10 w-full flex flex-col-reverse md:flex-row items-center justify-between">
 
                 <div className="w-full lg:w-1/2 flex text-left gap-[25px] items-center md:justify-normal justify-center">
@@ -67,9 +109,9 @@ const HeroSection = () => {
                 </div>
 
                 <div className="w-full h-full lg:w-1/2 flex items-center justify-center mb-8 md:mb-[0px] relative sm:h-[400px] font-clash">
-                    <div className="bg-primary w-[288px] h-[430px] md:w-64 lg:w-72 lg:h-[500px] xl:h-[580px] rounded-t-full absolute z-0 md:bottom-[-120px] xl:bottom-[-180px] lg:bottom-[-100px] bottom-[-25px]"></div>
+                    <div className="bg-primary w-[288px] h-[430px] md:w-64 lg:w-72 lg:h-[500px] xl:h-[580px] rounded-t-full absolute z-0 md:bottom-[-125px] xl:bottom-[-180px] lg:bottom-[-110px] bottom-[-25px]"></div>
                     <div className='flex justify-center h-full w-full'>
-                        <div className="overflow-hidden relative xl:w-[471px] xl:h-[702px] lg:w-[400px] lg:h-[600px] md:w-[350px] md:h-[530px] w-[300px] h-[450px] xl:bottom-[132px] lg:bottom-[110px] md:bottom-[15px] sm:bottom-[25px] bottom-[-25px]">
+                        <div className="overflow-hidden relative xl:w-[471px] xl:h-[702px] lg:w-[400px] lg:h-[600px] md:w-[350px] md:h-[530px] w-[300px] h-[450px] xl:bottom-[132px] lg:bottom-[90px] md:bottom-[5px] sm:bottom-[25px] bottom-[-25px]">
                             <Image
                                 width={1111}
                                 height={1500}
@@ -91,30 +133,24 @@ const HeroSection = () => {
             <div className="bg-primary md:py-8 py-6 gap-4 sm:gap-6 md:gap-12 flex justify-center items-center relative text-black z-15 font-clash">
                 <Image width={52} height={52} src="/star-logo.png" alt="star-logo" className='w-[52px] absolute top-[-26px] right-[36px]' />
                 <Image width={52} height={52} src="/star-logo.png" alt="star-logo" className='z-20 sm:w-[92px] w-12 absolute bottom-[-44px] left-[-30px] sm:left-[-45px]' />
-
                 <div className="flex flex-col items-center">
                     <Counter endValue={7} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">years of</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>experience</p>
                 </div>
-
                 <div className="h-12 w-px bg-black opacity-50"></div>
-
                 <div className="flex flex-col items-center">
                     <Counter endValue={50} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">complete</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>projects</p>
                 </div>
-
                 <div className="h-12 w-px bg-black opacity-50"></div>
-
                 <div className="flex flex-col items-center">
                     <Counter endValue={30} />
                     <p className="font-normal md:text-xl sm:text-base text-xs">Happy</p>
                     <p className='font-semibold md:text-xl sm:text-base text-xs'>customers</p>
                 </div>
             </div>
-
         </section>
     );
 };
