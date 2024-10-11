@@ -12,6 +12,17 @@ const Footer = () => {
         return emailRegex.test(email);
     };
 
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (!email) {
+                alert('Please enter an email address.');
+            } else if (validateEmail(email)) {
+                openModal();
+            }
+        }
+    };
+
     function openModal() {
         if (validateEmail(email)) {
             setModalOpen(true);
@@ -36,17 +47,17 @@ const Footer = () => {
                         <div className='mr-5'>
                             <h3 className="font-bold md:text-2xl sm:text-xl text-lg mb-4">Pages</h3>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-base font-normal hover:underline">Home</a></li>
-                                <li><a href="#" className="text-base font-normal hover:underline">About Us</a></li>
-                                <li><a href="#" className="text-base font-normal hover:underline">Contact Us</a></li>
+                                <li><button className="text-base font-normal hover:underline">Home</button></li>
+                                <li><button className="text-base font-normal hover:underline">About Us</button></li>
+                                <li><button className="text-base font-normal hover:underline">Contact Us</button></li>
                             </ul>
                         </div>
 
                         <div>
                             <h3 className="font-bold md:text-2xl sm:text-xl text-lg mb-4">Legal</h3>
                             <ul className="space-y-2">
-                                <li><a href="#" className="text-base font-normal hover:underline">Privacy Policy</a></li>
-                                <li><a href="#" className="text-base font-normal hover:underline">Terms & Conditions</a></li>
+                                <li><button className="text-base font-normal hover:underline">Privacy Policy</button></li>
+                                <li><button className="text-base font-normal hover:underline">Terms & Conditions</button></li>
                             </ul>
                         </div>
                     </div>
@@ -60,6 +71,7 @@ const Footer = () => {
                                 className="h-[54px] sm:h-[74px] px-4 py-2 w-full focus:outline-none text-base font-bold bg-[#FFFFFF21] border border-white border-opacity-65 rounded-lg text-white placeholder-white placeholder:font-bold placeholder:text-[14px] font-cabinet"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
+                                onKeyDown={handleKeyPress}
                             />
                             <button type="button" className="bg-primary absolute sm:w-[54px] sm:h-[54px] w-[35px] h-[35px] shadow-[0px_8px_21px_0px_#E8752529] rounded-lg right-[2%] flex justify-center items-center hover:bg-[rgba(93,190,140,0.6)] transition-all duration-300" onClick={openModal}>
                                 <Image

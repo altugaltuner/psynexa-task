@@ -68,16 +68,28 @@ const HeroSection = () => {
             </div>
 
             <div
-                className={`fixed top-0 right-0 h-full w-[300px] bg-white shadow-lg transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+                className={`fixed top-0 right-0 h-full w-[300px] bg-[#252534] text-white shadow-lg transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'
                     } transition-transform duration-300 ease-in-out z-30`}
             >
-                <ul className="flex flex-col p-6 space-y-4 text-black">
-                    <li className="text-lg font-semibold cursor-pointer">Category 1</li>
-                    <li className="text-lg font-semibold cursor-pointer">Category 2</li>
-                    <li className="text-lg font-semibold cursor-pointer">Category 3</li>
-                    <li className="text-lg font-semibold cursor-pointer">Category 4</li>
+                <ul className="flex flex-col p-6 space-y-3 text-white">
+                    <li>
+                        <button className="text-lg font-semibold cursor-pointer hover:text-[#FFEB5C] transition-colors duration-300">Homepage</button>
+                    </li>
+                    <hr className="border-t border-gray-500" />
+                    <li>
+                        <button className="text-lg font-semibold cursor-pointer hover:text-[#FFEB5C] transition-colors duration-300">My Profile</button>
+                    </li>
+                    <hr className="border-t border-gray-500" />
+                    <li>
+                        <button className="text-lg font-semibold cursor-pointer hover:text-[#FFEB5C] transition-colors duration-300">My Works</button>
+                    </li>
+                    <hr className="border-t border-gray-500" />
+                    <li>
+                        <button className="text-lg font-semibold cursor-pointer hover:text-[#FFEB5C] transition-colors duration-300">Contact Me</button>
+                    </li>
                 </ul>
             </div>
+
             <div
                 className="absolute inset-0 bg-cover bg-center opacity-30 cursor-pointer h-full"
                 style={{ backgroundImage: "url('/concrete-background.jpeg')" }}
